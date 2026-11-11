@@ -29,6 +29,13 @@ Response time is one of the most-cited RevOps KPIs, and it is easy to measure ba
 
 ## Architecture
 
+### Workflow 1: Speed-to-Lead Monitor & Weekly Report
+![Speed-to-Lead Monitor Workflow](assets/workflow-01-speed-to-lead-monitor.png)
+
+### Workflow 2: Round-Robin Lead Assignment & Webhook Handler
+![Round-Robin Lead Assignment Workflow](assets/workflow-02-round-robin-assignment.png)
+
+More detail: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 ```mermaid
 flowchart LR
   T1["Every 5 min"] --> C
