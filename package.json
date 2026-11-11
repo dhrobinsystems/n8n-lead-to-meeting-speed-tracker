@@ -1,0 +1,16 @@
+{
+  "name": "n8n-lead-to-meeting-speed-tracker",
+  "version": "1.0.0",
+  "description": "n8n speed-to-lead SLA monitor for HubSpot: business-hours-aware first-touch tracking, Slack Block Kit alerts, weekly rep report, and round-robin assignment with fallback rules.",
+  "license": "MIT",
+  "author": "dhRobin Systems",
+  "private": true,
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "node scripts/build-workflows.js",
+    "check": "node scripts/build-workflows.js --check",
+    "test": "node tests/run-tests.js",
+    "demo": "node scripts/demo.js"
+  },
+  "keywords": ["n8n", "hubspot", "revops", "speed-to-lead", "sla", "slack", "round-robin", "marketing-operations"]
+}
