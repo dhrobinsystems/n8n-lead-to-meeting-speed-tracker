@@ -1,0 +1,13 @@
+{
+  "contactId": "301",
+  "sandbox": true,
+  "wroteToHubSpot": false,
+  "action": "ASSIGN",
+  "strategy": "ROUND_ROBIN",
+  "ownerId": "1001",
+  "ownerName": "Jordan Blake",
+  "newIndex": 0,
+  "openLeadsBefore": 2,
+  "skipped": [],
+  "countsTruncated": false
+}
