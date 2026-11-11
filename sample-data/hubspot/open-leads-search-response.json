@@ -1,0 +1,60 @@
+{
+  "total": 5,
+  "results": [
+    {
+      "id": "201",
+      "properties": {
+        "hs_object_id": "201",
+        "createdate": "2026-11-03T15:00:00.000Z",
+        "hubspot_owner_id": "1001"
+      },
+      "createdAt": "2026-11-03T15:00:00.000Z",
+      "updatedAt": "2026-11-03T15:00:00.000Z",
+      "archived": false
+    },
+    {
+      "id": "202",
+      "properties": {
+        "hs_object_id": "202",
+        "createdate": "2026-11-03T15:00:00.000Z",
+        "hubspot_owner_id": "1001"
+      },
+      "createdAt": "2026-11-03T15:00:00.000Z",
+      "updatedAt": "2026-11-03T15:00:00.000Z",
+      "archived": false
+    },
+    {
+      "id": "203",
+      "properties": {
+        "hs_object_id": "203",
+        "createdate": "2026-11-03T15:00:00.000Z",
+        "hubspot_owner_id": "1002"
+      },
+      "createdAt": "2026-11-03T15:00:00.000Z",
+      "updatedAt": "2026-11-03T15:00:00.000Z",
+      "archived": false
+    },
+    {
+      "id": "204",
+      "properties": {
+        "hs_object_id": "204",
+        "createdate": "2026-11-03T15:00:00.000Z",
+        "hubspot_owner_id": "1002"
+      },
+      "createdAt": "2026-11-03T15:00:00.000Z",
+      "updatedAt": "2026-11-03T15:00:00.000Z",
+      "archived": false
+    },
+    {
+      "id": "205",
+      "properties": {
+        "hs_object_id": "205",
+        "createdate": "2026-11-03T15:00:00.000Z",
+        "hubspot_owner_id": "1002"
+      },
+      "createdAt": "2026-11-03T15:00:00.000Z",
+      "updatedAt": "2026-11-03T15:00:00.000Z",
+      "archived": false
+    }
+  ]
+}

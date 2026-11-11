@@ -1,0 +1,24 @@
+{
+  "status": "COMPLETE",
+  "results": [
+    {
+      "from": {
+        "id": "107"
+      },
+      "to": [
+        {
+          "toObjectId": 7001,
+          "associationTypes": [
+            {
+              "category": "HUBSPOT_DEFINED",
+              "typeId": 0,
+              "label": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "startedAt": "2026-11-10T20:30:00.000Z",
+  "completedAt": "2026-11-10T20:30:00.100Z"
+}

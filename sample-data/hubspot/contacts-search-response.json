@@ -1,0 +1,174 @@
+{
+  "total": 9,
+  "results": [
+    {
+      "id": "108",
+      "properties": {
+        "hs_object_id": "108",
+        "createdate": "2026-11-10T20:27:00.000Z",
+        "firstname": "Noah",
+        "lastname": "Fischer",
+        "email": "noah.fischer@example.com",
+        "company": "Lakeside Dental Group",
+        "hubspot_owner_id": "1003",
+        "hs_lead_status": "NEW",
+        "lifecyclestage": "lead",
+        "recent_conversion_date": "2026-11-10T20:27:00.000Z",
+        "recent_conversion_event_name": "Contact Us"
+      },
+      "createdAt": "2026-11-10T20:27:00.000Z",
+      "updatedAt": "2026-11-10T20:27:00.000Z",
+      "archived": false
+    },
+    {
+      "id": "103",
+      "properties": {
+        "hs_object_id": "103",
+        "createdate": "2026-11-10T20:18:00.000Z",
+        "firstname": "Priya",
+        "lastname": "Nair",
+        "email": "priya.nair@example.com",
+        "company": "Orbit Logistics",
+        "hubspot_owner_id": "1001",
+        "hs_lead_status": "NEW",
+        "lifecyclestage": "lead",
+        "recent_conversion_date": "2026-11-10T20:18:00.000Z",
+        "recent_conversion_event_name": "Pricing Page Inquiry"
+      },
+      "createdAt": "2026-11-10T20:18:00.000Z",
+      "updatedAt": "2026-11-10T20:18:00.000Z",
+      "archived": false
+    },
+    {
+      "id": "102",
+      "properties": {
+        "hs_object_id": "102",
+        "createdate": "2026-11-10T20:10:00.000Z",
+        "firstname": "Liam",
+        "lastname": "O'Connor",
+        "email": "liam.oconnor@example.com",
+        "company": "Harborview Clinics",
+        "hubspot_owner_id": "1002",
+        "hs_lead_status": "NEW",
+        "lifecyclestage": "lead",
+        "recent_conversion_date": "2026-11-10T20:10:00.000Z",
+        "recent_conversion_event_name": "Contact Us"
+      },
+      "createdAt": "2026-11-10T20:10:00.000Z",
+      "updatedAt": "2026-11-10T20:10:00.000Z",
+      "archived": false
+    },
+    {
+      "id": "101",
+      "properties": {
+        "hs_object_id": "101",
+        "createdate": "2026-11-10T19:55:00.000Z",
+        "firstname": "Maya",
+        "lastname": "Chen",
+        "email": "maya.chen@example.com",
+        "company": "Brightfield Robotics",
+        "hubspot_owner_id": "1001",
+        "hs_lead_status": "NEW",
+        "lifecyclestage": "lead",
+        "recent_conversion_date": "2026-11-10T19:55:00.000Z",
+        "recent_conversion_event_name": "Request a Demo"
+      },
+      "createdAt": "2026-11-10T19:55:00.000Z",
+      "updatedAt": "2026-11-10T19:55:00.000Z",
+      "archived": false
+    },
+    {
+      "id": "107",
+      "properties": {
+        "hs_object_id": "107",
+        "createdate": "2026-10-20T15:00:00.000Z",
+        "firstname": "Grace",
+        "lastname": "Okafor",
+        "email": "grace.okafor@example.com",
+        "company": "Summit Freight",
+        "hubspot_owner_id": "1003",
+        "hs_lead_status": "OPEN",
+        "lifecyclestage": "marketingqualifiedlead",
+        "recent_conversion_date": "2026-11-10T19:40:00.000Z",
+        "recent_conversion_event_name": "Request a Demo"
+      },
+      "createdAt": "2026-10-20T15:00:00.000Z",
+      "updatedAt": "2026-10-20T15:00:00.000Z",
+      "archived": false
+    },
+    {
+      "id": "104",
+      "properties": {
+        "hs_object_id": "104",
+        "createdate": "2026-11-10T19:30:00.000Z",
+        "firstname": "Tom",
+        "lastname": "Becker",
+        "email": "tom.becker@example.com",
+        "company": "Becker & Sons Hardware",
+        "lifecyclestage": "lead",
+        "recent_conversion_date": "2026-11-10T19:30:00.000Z",
+        "recent_conversion_event_name": "Newsletter Plus Quote"
+      },
+      "createdAt": "2026-11-10T19:30:00.000Z",
+      "updatedAt": "2026-11-10T19:30:00.000Z",
+      "archived": false
+    },
+    {
+      "id": "105",
+      "properties": {
+        "hs_object_id": "105",
+        "createdate": "2026-11-09T14:10:00.000Z",
+        "firstname": "Sofia",
+        "lastname": "Marino",
+        "email": "sofia.marino@example.com",
+        "company": "Marino Design Studio",
+        "hubspot_owner_id": "1002",
+        "hs_lead_status": "ATTEMPTED_TO_CONTACT",
+        "lifecyclestage": "lead",
+        "recent_conversion_date": "2026-11-09T14:10:00.000Z",
+        "recent_conversion_event_name": "Contact Us"
+      },
+      "createdAt": "2026-11-09T14:10:00.000Z",
+      "updatedAt": "2026-11-09T14:10:00.000Z",
+      "archived": false
+    },
+    {
+      "id": "106",
+      "properties": {
+        "hs_object_id": "106",
+        "createdate": "2026-11-06T22:30:00.000Z",
+        "firstname": "Daniel",
+        "lastname": "Kim",
+        "email": "daniel.kim@example.com",
+        "company": "Kim Analytics",
+        "hubspot_owner_id": "1001",
+        "hs_lead_status": "NEW",
+        "lifecyclestage": "lead",
+        "recent_conversion_date": "2026-11-06T22:30:00.000Z",
+        "recent_conversion_event_name": "Request a Demo",
+        "hs_latest_sequence_enrolled_date": "2026-11-09T14:06:00.000Z"
+      },
+      "createdAt": "2026-11-06T22:30:00.000Z",
+      "updatedAt": "2026-11-06T22:30:00.000Z",
+      "archived": false
+    },
+    {
+      "id": "109",
+      "properties": {
+        "hs_object_id": "109",
+        "createdate": "2026-11-10T18:00:00.000Z",
+        "firstname": "Existing",
+        "lastname": "Customer",
+        "email": "existing.customer@example.com",
+        "company": "Already Signed Inc",
+        "hubspot_owner_id": "1002",
+        "lifecyclestage": "customer",
+        "recent_conversion_date": "2026-11-10T18:00:00.000Z",
+        "recent_conversion_event_name": "Support Form"
+      },
+      "createdAt": "2026-11-10T18:00:00.000Z",
+      "updatedAt": "2026-11-10T18:00:00.000Z",
+      "archived": false
+    }
+  ]
+}

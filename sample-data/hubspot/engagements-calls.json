@@ -1,0 +1,40 @@
+{
+  "status": "COMPLETE",
+  "results": [
+    {
+      "id": "5001",
+      "properties": {
+        "hs_object_id": "5001",
+        "hs_timestamp": "2026-11-10T20:03:00.000Z",
+        "hs_call_direction": "OUTBOUND"
+      },
+      "createdAt": "2026-11-10T20:03:00.000Z",
+      "updatedAt": "2026-11-10T20:03:00.000Z",
+      "archived": false
+    },
+    {
+      "id": "5002",
+      "properties": {
+        "hs_object_id": "5002",
+        "hs_timestamp": "2026-10-21T15:00:00.000Z",
+        "hs_call_direction": "OUTBOUND"
+      },
+      "createdAt": "2026-10-21T15:00:00.000Z",
+      "updatedAt": "2026-10-21T15:00:00.000Z",
+      "archived": false
+    },
+    {
+      "id": "5003",
+      "properties": {
+        "hs_object_id": "5003",
+        "hs_timestamp": "2026-11-10T20:12:00.000Z",
+        "hs_call_direction": "INBOUND"
+      },
+      "createdAt": "2026-11-10T20:12:00.000Z",
+      "updatedAt": "2026-11-10T20:12:00.000Z",
+      "archived": false
+    }
+  ],
+  "startedAt": "2026-11-10T20:30:00.000Z",
+  "completedAt": "2026-11-10T20:30:00.100Z"
+}

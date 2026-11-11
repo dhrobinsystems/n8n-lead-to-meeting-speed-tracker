@@ -1,0 +1,29 @@
+{
+  "status": "COMPLETE",
+  "results": [
+    {
+      "id": "6001",
+      "properties": {
+        "hs_object_id": "6001",
+        "hs_timestamp": "2026-11-09T14:40:00.000Z",
+        "hs_email_direction": "EMAIL"
+      },
+      "createdAt": "2026-11-09T14:40:00.000Z",
+      "updatedAt": "2026-11-09T14:40:00.000Z",
+      "archived": false
+    },
+    {
+      "id": "6002",
+      "properties": {
+        "hs_object_id": "6002",
+        "hs_timestamp": "2026-11-10T19:35:00.000Z",
+        "hs_email_direction": "INCOMING_EMAIL"
+      },
+      "createdAt": "2026-11-10T19:35:00.000Z",
+      "updatedAt": "2026-11-10T19:35:00.000Z",
+      "archived": false
+    }
+  ],
+  "startedAt": "2026-11-10T20:30:00.000Z",
+  "completedAt": "2026-11-10T20:30:00.100Z"
+}
