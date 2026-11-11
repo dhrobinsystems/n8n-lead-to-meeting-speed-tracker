@@ -1,0 +1,7 @@
+[
+  { "id": "1001", "name": "Jordan Blake", "maxOpenLeads": 25 },
+  { "id": "1002", "name": "Casey Morgan", "maxOpenLeads": 3 },
+  { "id": "1003", "name": "Riley Patel",  "maxOpenLeads": 25 },
+  { "id": "1004", "name": "Sam Ortiz",    "maxOpenLeads": 25, "ooo": [{ "from": "2026-11-09", "to": "2026-11-20" }] },
+  { "id": "1005", "name": "Avery Quinn",  "active": false }
+]
