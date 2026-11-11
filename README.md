@@ -1,4 +1,3 @@
-Markdown
 # n8n Lead-to-Meeting Speed Tracker
 
 **Speed-to-lead SLA monitoring for HubSpot, built in n8n.** Watches new leads and form submissions, measures time to first touch in *business* minutes, flags SLA breaches in Slack, posts a weekly rep-level response-time report, and routes new leads with round-robin assignment and fallback rules.
@@ -8,18 +7,6 @@ Markdown
 ![HubSpot](https://img.shields.io/badge/CRM-HubSpot-ff7a59)
 ![Slack](https://img.shields.io/badge/alerts-Slack%20Block%20Kit-4a154b)
 ![Sandbox](https://img.shields.io/badge/default-SANDBOX__MODE%3Dtrue-blue)
-
----
-
-## ⚠️ Disclaimer & Liability Limitation
-
-**Use at your own risk.** The code, workflows, and scripts provided in this repository (`n8n-lead-to-meeting-speed-tracker`) are for educational and architectural demonstration purposes.
-
-* **No Liability:** The author and dhRobin Systems assume no responsibility or liability for any direct, indirect, incidental, or consequential damages resulting from the use, misuse, or deployment of these scripts and workflows.
-* **CRM Data, Lead Routing & Alerting Risks:** CRM automation carries inherent risks. Misconfigured filters, incorrect property mappings, bad API calls, or aggressive polling can produce wrong SLA alerts, reassign lead ownership to the wrong people, overwrite CRM data, exhaust API rate limits, flood Slack channels, or cause leads to be missed or mis-routed. Workflow 2 **writes to HubSpot** (it changes `hubspot_owner_id`); Workflow 1 only reads from HubSpot.
-* **User Responsibility:** You are solely responsible for compliance with applicable laws, regulations, and contracts, including data-protection and privacy rules (such as GDPR, CCPA, and CASL), employment and workplace-monitoring rules that may apply to rep-level performance reporting, API rate limits, and the terms of service of HubSpot, Slack, n8n, and any other provider you connect. You are also solely responsible for proper testing (`SANDBOX_MODE=true`) before connecting any scripts to production environments, live CRM data, or live notification channels.
-
-Full text: [DISCLAIMER.md](DISCLAIMER.md) · Licensed under the [MIT License](LICENSE).
 
 ---
 
@@ -56,7 +43,9 @@ flowchart LR
   B --> G{"Sandbox mode?"}
   G -- "yes" --> P["Preview only"]
   G -- "no" --> SL["Post to Slack"]
-Code snippet
+```
+
+```mermaid
 flowchart LR
   W["HubSpot workflow: Send a webhook"] --> V["Validate + load config"]
   V --> GC["HubSpot: get contact"]
@@ -70,9 +59,13 @@ flowchart LR
   FR --> RS["Respond to webhook"]
   FR --> FA{"Fallback used?"}
   FA -- "yes" --> SF["Slack fallback alert"]
-More detail: docs/ARCHITECTURE.md.
+```
 
-Repository layout
+More detail: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+
+## Repository layout
+
+```
 ├── workflows/
 │   ├── 01-speed-to-lead-monitor-and-report.json   # import into n8n (read-only on HubSpot)
 │   └── 02-round-robin-lead-assignment.json        # import into n8n (writes owner when SANDBOX_MODE=false)
@@ -91,42 +84,40 @@ Repository layout
 ├── docs/                     # SETUP, CONFIGURATION, ARCHITECTURE
 ├── .env.example
 ├── DISCLAIMER.md · LICENSE · CONTRIBUTING.md · CHANGELOG.md
-Quick start
-Requires: n8n (self-hosted recommended), a HubSpot private app token, and a Slack incoming webhook. Full walkthrough: docs/SETUP.md.
+```
 
-Try it offline first (no accounts needed):
+## Quick start
 
-Bash
-git clone [https://github.com/dhrobinsystems/n8n-lead-to-meeting-speed-tracker.git](https://github.com/dhrobinsystems/n8n-lead-to-meeting-speed-tracker.git)
-cd n8n-lead-to-meeting-speed-tracker
-npm test       # 59 checks
-npm run demo   # runs the real workflow logic on bundled sample data
-Create credentials in n8n: HubSpot App Token (read scopes for Workflow 1; add write scope only if you use Workflow 2) and, for Workflow 2, a Header Auth credential to protect the webhook.
+> Requires: n8n (self-hosted recommended), a HubSpot private app token, and a Slack incoming webhook. Full walkthrough: **[docs/SETUP.md](docs/SETUP.md)**.
 
-Set environment variables on your n8n instance from .env.example. Keep SANDBOX_MODE=true.
+1. **Try it offline first** (no accounts needed):
+   ```bash
+   git clone https://github.com/dhrobinsystems/n8n-lead-to-meeting-speed-tracker.git
+   cd n8n-lead-to-meeting-speed-tracker
+   npm test       # 59 checks
+   npm run demo   # runs the real workflow logic on bundled sample data
+   ```
+2. **Create credentials in n8n:** *HubSpot App Token* (read scopes for Workflow 1; add write scope only if you use Workflow 2) and, for Workflow 2, a *Header Auth* credential to protect the webhook.
+3. **Set environment variables** on your n8n instance from [`.env.example`](.env.example). Keep `SANDBOX_MODE=true`.
+4. **Import** both files from `workflows/` (n8n → Workflows → Import from file) and attach your credentials.
+5. **Dry-run in sandbox:** execute *Manual Test* in Workflow 1. The Slack payload appears on the *Sandbox: Preview Only* node; paste `payload` into the [Slack Block Kit Builder](https://app.slack.com/block-kit-builder) to preview.
+6. **Go live deliberately:** only after the checklist in [docs/SETUP.md](docs/SETUP.md#go-live-checklist), set `SANDBOX_MODE=false` and activate the workflows.
 
-Import both files from workflows/ (n8n → Workflows → Import from file) and attach your credentials.
+## How the SLA is measured
 
-Dry-run in sandbox: execute Manual Test in Workflow 1. The Slack payload appears on the Sandbox: Preview Only node; paste payload into the Slack Block Kit Builder to preview.
+- **Clock start** = the contact's create date, or the latest form submission if that is later (`CLOCK_RESTARTS_ON_FORM_SUBMIT=true`).
+- **Clock runs** only inside business hours (default Mon–Fri 09:00–17:00 `America/New_York`, holidays excluded).
+- **First touch** = earliest outbound call, email, meeting *booked*, or sequence enrollment on/after the clock start.
+- **Statuses:** `MET` · `BREACHED_LATE` (touched, but late) · `OPEN_WITHIN_SLA` · `OPEN_AT_RISK` (≥ 75% of the SLA used) · `OPEN_BREACHED`.
+- **Attainment %** = met ÷ (met + late + untouched-and-breached). Leads still inside their SLA are excluded so the number is not distorted by fresh leads.
 
-Go live deliberately: only after the checklist in docs/SETUP.md, set SANDBOX_MODE=false and activate the workflows.
+Example (default 15-minute SLA): a lead submits a form **Fri 17:30**, a rep enrolls them in a sequence **Mon 09:06** → **6 business minutes → MET** (not 63 hours).
 
-How the SLA is measured
-Clock start = the contact's create date, or the latest form submission if that is later (CLOCK_RESTARTS_ON_FORM_SUBMIT=true).
+## Demo output
 
-Clock runs only inside business hours (default Mon–Fri 09:00–17:00 America/New_York, holidays excluded).
+`npm run demo` on the bundled sample data (fictional leads, `example.com` addresses):
 
-First touch = earliest outbound call, email, meeting booked, or sequence enrollment on/after the clock start.
-
-Statuses: MET · BREACHED_LATE (touched, but late) · OPEN_WITHIN_SLA · OPEN_AT_RISK (≥ 75% of the SLA used) · OPEN_BREACHED.
-
-Attainment % = met ÷ (met + late + untouched-and-breached). Leads still inside their SLA are excluded so the number is not distorted by fresh leads.
-
-Example (default 15-minute SLA): a lead submits a form Fri 17:30, a rep enrolls them in a sequence Mon 09:06 → 6 business minutes → MET (not 63 hours).
-
-Demo output
-npm run demo on the bundled sample data (fictional leads, example.com addresses):
-
+```
 Speed-to-Lead Tracker demo  |  "now" = Tue 3:30 PM New York  |  SLA = 15 business minutes
 
 1) Monitor run: leads that need a Slack alert
@@ -145,46 +136,56 @@ Speed-to-Lead Tracker demo  |  "now" = Tue 3:30 PM New York  |  SLA = 15 busines
 
 3) Round-robin: next new lead
    -> Jordan Blake (ROUND_ROBIN); skipped: none; wroteToHubSpot=false (sandbox)
-Ready-to-preview Slack payloads: sample-data/expected-output/slack-sla-alert.json and slack-weekly-report.json.
+```
 
-Configuration
-Everything is controlled by environment variables — SLA length, warning threshold, business hours, holidays, lead filters, reps, capacity limits, fallback owner. See .env.example and docs/CONFIGURATION.md.
+Ready-to-preview Slack payloads: [`sample-data/expected-output/slack-sla-alert.json`](sample-data/expected-output/slack-sla-alert.json) and [`slack-weekly-report.json`](sample-data/expected-output/slack-weekly-report.json).
 
-Testing
-Bash
+## Configuration
+
+Everything is controlled by environment variables — SLA length, warning threshold, business hours, holidays, lead filters, reps, capacity limits, fallback owner. See [`.env.example`](.env.example) and [docs/CONFIGURATION.md](docs/CONFIGURATION.md).
+
+## Testing
+
+```bash
 npm test         # business-hours edge cases (weekends, holidays, DST), SLA statuses, round-robin rules,
                  # Slack limits, and the REAL generated Code-node code run against HubSpot-shaped sample data
 npm run check    # generated workflow JSON is current and every Code node compiles
-Status & known limitations
-Please read before relying on this.
+```
 
-The logic is covered by automated tests, and the workflow Code nodes are exercised end-to-end against sample data with the HTTP calls mocked. It has not been validated against your live HubSpot portal or your n8n version — API behavior, scopes, and property names vary. Verify in sandbox first (docs/SETUP.md).
+## Status & known limitations
 
-Each monitor run reads up to 100 leads (no pagination yet); the open-lead capacity count is also capped at 100 results.
+**Please read before relying on this.**
 
-State (alert de-duplication, round-robin position, trend log) lives in n8n workflow static data, which is saved only for active (production) executions, is per instance, and is not a database. Two simultaneous webhook calls can race on the rotation.
+- The logic is covered by automated tests, and the workflow Code nodes are exercised end-to-end against sample data with the HTTP calls mocked. **It has not been validated against your live HubSpot portal or your n8n version** — API behavior, scopes, and property names vary. Verify in sandbox first ([docs/SETUP.md](docs/SETUP.md#verify-property-names)).
+- Each monitor run reads **up to 100 leads** (no pagination yet); the open-lead capacity count is also capped at 100 results.
+- State (alert de-duplication, round-robin position, trend log) lives in **n8n workflow static data**, which is saved only for **active (production) executions**, is per instance, and is not a database. Two simultaneous webhook calls can race on the rotation.
+- Business hours are **one global schedule** (not per-rep schedules).
+- "Sequence enrollment" relies on the contact property `hs_latest_sequence_enrolled_date`; confirm it exists in your portal.
+- Logged emails that HubSpot records as sent by a user count as touches; fully automated marketing emails normally do not appear as 1:1 engagements, but check your setup.
+- Rep-level reporting may be regulated where you operate (see the disclaimer).
 
-Business hours are one global schedule (not per-rep schedules).
+## Roadmap ideas
 
-"Sequence enrollment" relies on the contact property hs_latest_sequence_enrolled_date; confirm it exists in your portal.
+- Pagination for portals with > 100 new leads per window
+- Per-rep working hours and time zones
+- Optional Google Sheets / database trend export node
+- Optional write-back of SLA status to custom HubSpot properties
+- Escalation to a manager after a second breach
 
-Logged emails that HubSpot records as sent by a user count as touches; fully automated marketing emails normally do not appear as 1:1 engagements, but check your setup.
+## Contributing
 
-Rep-level reporting may be regulated where you operate (see the disclaimer).
+See [CONTRIBUTING.md](CONTRIBUTING.md). Edit `src/` and `scripts/node-code/`, then run `npm run build`; the JSON in `workflows/` is generated.
 
-Roadmap ideas
-Pagination for portals with > 100 new leads per window
+## ⚠️ Disclaimer & Liability Limitation
 
-Per-rep working hours and time zones
+**Use at your own risk.** The code, workflows, and scripts provided in this repository (`n8n-lead-to-meeting-speed-tracker`) are for educational and architectural demonstration purposes.
 
-Optional Google Sheets / database trend export node
+* **No Liability:** The author and dhRobin Systems assume no responsibility or liability for any direct, indirect, incidental, or consequential damages resulting from the use, misuse, or deployment of these scripts and workflows.
+* **CRM Data, Lead Routing & Alerting Risks:** CRM automation carries inherent risks. Misconfigured filters, incorrect property mappings, bad API calls, or aggressive polling can produce wrong SLA alerts, reassign lead ownership to the wrong people, overwrite CRM data, exhaust API rate limits, flood Slack channels, or cause leads to be missed or mis-routed. Workflow 2 **writes to HubSpot** (it changes `hubspot_owner_id`); Workflow 1 only reads from HubSpot.
+* **User Responsibility:** You are solely responsible for compliance with applicable laws, regulations, and contracts, including data-protection and privacy rules (such as GDPR, CCPA, and CASL), employment and workplace-monitoring rules that may apply to rep-level performance reporting, API rate limits, and the terms of service of HubSpot, Slack, n8n, and any other provider you connect. You are also solely responsible for proper testing (`SANDBOX_MODE=true`) before connecting any scripts to production environments, live CRM data, or live notification channels.
 
-Optional write-back of SLA status to custom HubSpot properties
+Full text: [DISCLAIMER.md](DISCLAIMER.md) · Licensed under the [MIT License](LICENSE).
 
-Escalation to a manager after a second breach
+## License
 
-Contributing
-See CONTRIBUTING.md. Edit src/ and scripts/node-code/, then run npm run build; the JSON in workflows/ is generated.
-
-License
-MIT © 2026 dhRobin Systems · Provided as-is, see the disclaimer.
+[MIT](LICENSE) © 2026 dhRobin Systems · Provided as-is, see the [disclaimer](#️-disclaimer--liability-limitation).
