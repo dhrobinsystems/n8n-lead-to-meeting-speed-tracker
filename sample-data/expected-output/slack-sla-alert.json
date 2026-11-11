@@ -1,0 +1,53 @@
+{
+  "text": "[SANDBOX] Speed-to-Lead SLA alert: 2 breached, 1 at risk",
+  "blocks": [
+    {
+      "type": "header",
+      "text": {
+        "type": "plain_text",
+        "text": "[SANDBOX] 🚨 Speed-to-Lead SLA Alert",
+        "emoji": true
+      }
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*2* breached · *1* at risk · SLA: *15 business min* (America/New_York)"
+      }
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "🔴 *<https://app.hubspot.com/contacts/1234567/record/0-1/104|Tom Becker>* · Becker &amp; Sons Hardware\nOwner: *Unassigned* · Waiting *1h 0m* of 15 min · Form: Newsletter Plus Quote\nSLA was due: Tue, 2:45 PM EST"
+      }
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "🔴 *<https://app.hubspot.com/contacts/1234567/record/0-1/102|Liam O'Connor>* · Harborview Clinics\nOwner: Casey Morgan · Waiting *20 min* of 15 min · Form: Contact Us\nSLA was due: Tue, 3:25 PM EST"
+      }
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "🟠 *<https://app.hubspot.com/contacts/1234567/record/0-1/103|Priya Nair>* · Orbit Logistics\nOwner: Jordan Blake · Waiting *12 min* of 15 min · Form: Pricing Page Inquiry\nSLA due: Tue, 3:33 PM EST"
+      }
+    },
+    {
+      "type": "context",
+      "elements": [
+        {
+          "type": "mrkdwn",
+          "text": "Speed-to-Lead Tracker · dhRobin Systems · no first touch logged yet"
+        }
+      ]
+    }
+  ]
+}

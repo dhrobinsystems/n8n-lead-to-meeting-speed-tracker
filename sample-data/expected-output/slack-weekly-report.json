@@ -1,0 +1,70 @@
+{
+  "text": "[SANDBOX] Weekly speed-to-lead report: 50% SLA attainment across 8 leads",
+  "blocks": [
+    {
+      "type": "header",
+      "text": {
+        "type": "plain_text",
+        "text": "[SANDBOX] 📊 Weekly Speed-to-Lead Report",
+        "emoji": true
+      }
+    },
+    {
+      "type": "context",
+      "elements": [
+        {
+          "type": "mrkdwn",
+          "text": "Nov 3 – Nov 10 · SLA: 15 business min · America/New_York"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "fields": [
+        {
+          "type": "mrkdwn",
+          "text": "*Leads*\n8"
+        },
+        {
+          "type": "mrkdwn",
+          "text": "*SLA attainment*\n🔴 50%"
+        },
+        {
+          "type": "mrkdwn",
+          "text": "*Median first touch*\n10 min"
+        },
+        {
+          "type": "mrkdwn",
+          "text": "*P90 first touch*\n30 min"
+        },
+        {
+          "type": "mrkdwn",
+          "text": "*Never touched (SLA blown)*\n2"
+        },
+        {
+          "type": "mrkdwn",
+          "text": "*Touched late*\n1"
+        }
+      ]
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*By owner*\n🟢 *Jordan Blake* — 3 leads · 100% · median 7 min · p90 8 min\n🔴 *Casey Morgan* — 2 leads · 0% · median 30 min · p90 30 min · *1 untouched*\n🟢 *Riley Patel* — 2 leads · 100% · median 12 min · p90 12 min\n🔴 *Unassigned* — 1 lead · 0% · median n/a · p90 n/a · *1 untouched*"
+      }
+    },
+    {
+      "type": "context",
+      "elements": [
+        {
+          "type": "mrkdwn",
+          "text": "Attainment = met ÷ (met + late + untouched-and-breached). Leads still inside their SLA are excluded."
+        }
+      ]
+    }
+  ]
+}

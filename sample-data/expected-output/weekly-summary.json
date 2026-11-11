@@ -1,0 +1,82 @@
+{
+  "overall": {
+    "leads": 8,
+    "touched": 4,
+    "met": 3,
+    "breachedLate": 1,
+    "openBreached": 2,
+    "openAtRisk": 1,
+    "openWithin": 1,
+    "decided": 6,
+    "attainmentPct": 50,
+    "medianMinutes": 10,
+    "p90Minutes": 30,
+    "avgMinutes": 14
+  },
+  "byOwner": [
+    {
+      "ownerId": "1001",
+      "name": "Jordan Blake",
+      "leads": 3,
+      "touched": 2,
+      "met": 2,
+      "breachedLate": 0,
+      "openBreached": 0,
+      "openAtRisk": 1,
+      "openWithin": 0,
+      "decided": 2,
+      "attainmentPct": 100,
+      "medianMinutes": 7,
+      "p90Minutes": 8,
+      "avgMinutes": 7
+    },
+    {
+      "ownerId": "1002",
+      "name": "Casey Morgan",
+      "leads": 2,
+      "touched": 1,
+      "met": 0,
+      "breachedLate": 1,
+      "openBreached": 1,
+      "openAtRisk": 0,
+      "openWithin": 0,
+      "decided": 2,
+      "attainmentPct": 0,
+      "medianMinutes": 30,
+      "p90Minutes": 30,
+      "avgMinutes": 30
+    },
+    {
+      "ownerId": "1003",
+      "name": "Riley Patel",
+      "leads": 2,
+      "touched": 1,
+      "met": 1,
+      "breachedLate": 0,
+      "openBreached": 0,
+      "openAtRisk": 0,
+      "openWithin": 1,
+      "decided": 1,
+      "attainmentPct": 100,
+      "medianMinutes": 12,
+      "p90Minutes": 12,
+      "avgMinutes": 12
+    },
+    {
+      "ownerId": null,
+      "name": "Unassigned",
+      "leads": 1,
+      "touched": 0,
+      "met": 0,
+      "breachedLate": 0,
+      "openBreached": 1,
+      "openAtRisk": 0,
+      "openWithin": 0,
+      "decided": 1,
+      "attainmentPct": 0,
+      "medianMinutes": null,
+      "p90Minutes": null,
+      "avgMinutes": null
+    }
+  ]
+}
